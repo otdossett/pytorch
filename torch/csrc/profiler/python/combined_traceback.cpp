@@ -130,15 +130,17 @@ std::vector<py::object> py_symbolize(
   }
   auto s = symbolize(unique_frames);
 
-  py::str line_s = "line";
+  py::str lineno_s = "lineno";
   py::str name_s = "name";
   py::str filename_s = "filename";
+  py::str line_s = "line";
   std::vector<py::dict> all_frames;
   for (const auto& f : s.all_frames) {
     py::dict d;
     d[name_s] = f.funcname;
     d[filename_s] = f.filename;
-    d[line_s] = f.lineno;
+    d[lineno_s] = f.lineno;
+    d[line_s] = f.line;
     all_frames.emplace_back(std::move(d));
   }
 

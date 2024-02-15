@@ -250,5 +250,5 @@ def _extract_symbolized_tb(tb, skip):
     """
     stack = traceback.StackSummary()
     for f in reversed(tb[skip:]):
-        stack.append(traceback.FrameSummary(f['filename'], f['line'], f['name']))
+        stack.append(traceback.FrameSummary(f['filename'], f['lineno'], f['name'], line=f['line']))
     return stack
