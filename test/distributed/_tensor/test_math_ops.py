@@ -133,6 +133,7 @@ class DistMathOpsTest(DTensorTestBase):
                 self.assertTrue(dist_x.grad.placements[0].is_shard(dim=shard_dim))
             self.assertEqual(dist_x.grad.full_tensor(), x.grad)
 
+    @with_comms
     @skip_unless_torch_gpu
     def test_nll_loss_and_cross_entropy(self):
         device_mesh = self.build_device_mesh()
